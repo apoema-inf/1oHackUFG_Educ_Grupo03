@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import Welcome from './pages/Register';
+import Welcome from "./pages/Register";
+import Start from "./pages/Start";
 
 function App() {
   return (
     <div className="App">
-      <Welcome />
+      {/* <Welcome /> */}
+      {<Start />}
     </div>
   );
 }
