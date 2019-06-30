@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import { SingleDatePicker } from "react-dates";
 import {
   Input,
+  Button,
   Icon,
   Checkbox,
-  Button,
   Form,
-  Container
+  Container,
+  Transition
 } from "semantic-ui-react";
+import CustomButton from "../components/CustomButton";
 import "react-dates/lib/css/_datepicker.css";
 
 import Start from "./Start";
 
 const styles = {
   inputContainer: {
-    marginTop: 200
+    marginTop: 100
+  },
+  formItemContainer: {
+    marginLeft: 20,
+    marginRight: 20
   }
 };
 
@@ -32,14 +38,23 @@ export default function Welcome() {
     email: "",
     password: "",
     matricula: "",
-    contaMais: undefined
+    contaMais: undefined,
+    dataLimite: ""
   };
 
   const [page, setPage] = useState(0);
   const [fields, setField] = useState(fieldsInitialState);
   console.log(fields);
 
-  const { nome, apelido, email, password, matricula, contaMais } = fields;
+  const {
+    nome,
+    apelido,
+    email,
+    password,
+    matricula,
+    contaMais,
+    dataLimite
+  } = fields;
 
   return (
     <Container>
@@ -52,11 +67,11 @@ export default function Welcome() {
             onClick={() => setPage(page - 1)}
           />
         )}
-        <div style={styles.inputContainer}>
-          {page === 0 && <Start setPage={setPage} page={page} />}
+        <div>{page === 0 && <Start setPage={setPage} page={page} />}</div>
 
+        <div style={styles.inputContainer}>
           {page === 1 && (
-            <>
+            <div style={styles.formItemContainer}>
               <h3>Qual é o seu nome completo?</h3>
               <Input
                 value={nome}
@@ -67,27 +82,26 @@ export default function Welcome() {
                 onChange={updateFormData}
               />
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
+                  round
+                  basic
+                  color="green"
+                  style={{ marginTop: 10, justifyContent: "flex-end" }}
                   onClick={() => setPage(page + 1)}
                 >
                   <Icon
                     size="large"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                     name="arrow right"
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 2 && (
-            <>
+            <div style={styles.formItemContainer}>
               <h3>E ai, como posso te chamar?</h3>
               <Input
                 value={apelido}
@@ -98,8 +112,10 @@ export default function Welcome() {
                 onChange={updateFormData}
               />
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   icon
+                  round
+                  basic
                   style={{
                     marginTop: 10,
                     justifyContent: "flex-end",
@@ -110,15 +126,15 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 3 && (
-            <>
+            <div style={styles.formItemContainer}>
               <h3>Seu melhor email?</h3>
               <Input
                 value={email}
@@ -129,8 +145,9 @@ export default function Welcome() {
                 onChange={updateFormData}
               />
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   icon
+                  round
                   style={{
                     marginTop: 10,
                     justifyContent: "flex-end",
@@ -141,15 +158,15 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 4 && (
-            <>
+            <div style={styles.formItemContainer}>
               <h3>Senha SUPER secreta</h3>
               <Input
                 type="password"
@@ -160,8 +177,9 @@ export default function Welcome() {
                 onChange={updateFormData}
               />
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   type="submit"
+                  round
                   icon
                   style={{
                     marginTop: 10,
@@ -173,18 +191,19 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 5 && (
-            <>
+            <div style={styles.formItemContainer}>
               <h3>Qual é o seu número de matrícula?</h3>
               <Input
                 type="number"
+                placeholder="201502021"
                 value={matricula}
                 name="matricula"
                 fluid
@@ -192,8 +211,9 @@ export default function Welcome() {
                 onChange={updateFormData}
               />
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   type="submit"
+                  round
                   icon
                   style={{
                     marginTop: 10,
@@ -205,16 +225,21 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 6 && (
-            <>
-              <h3>Conta mais</h3>
+            <div style={styles.formItemContainer}>
+              <h3>Me conta mais</h3>
+              <p>
+                {apelido
+                  ? `${apelido}, você está em que etapa?`
+                  : "você está em que etapa?"}
+              </p>
               <Form.Field>
                 <Checkbox
                   name="contaMais"
@@ -259,8 +284,9 @@ export default function Welcome() {
                 />
               </Form.Field>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   type="submit"
+                  round
                   icon
                   style={{
                     marginTop: 10,
@@ -272,15 +298,15 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 7 && (
-            <>
+            <div style={styles.formItemContainer}>
               <h3>Você já tem orientador?</h3>
               <Form.Field>
                 <Checkbox
@@ -321,9 +347,10 @@ export default function Welcome() {
                 />
               </Form.Field>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   type="submit"
                   icon
+                  round
                   style={{
                     marginTop: 10,
                     justifyContent: "flex-end",
@@ -334,17 +361,25 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 8 && (
-            <>
+            <div style={styles.formItemContainer}>
               <h3>Qual sua data limite para finalizar para a banca?</h3>
               <Form.Field>
+                <Input
+                  type="date"
+                  value={dataLimite}
+                  name="dataLimite"
+                  fluid
+                  size="big"
+                  onChange={updateFormData}
+                />
                 {/* <SingleDatePicker
 									id="date_input"
 									// date={date}
@@ -354,9 +389,10 @@ export default function Welcome() {
 								/> */}
               </Form.Field>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   type="submit"
                   icon
+                  round
                   style={{
                     marginTop: 10,
                     justifyContent: "flex-end",
@@ -367,22 +403,23 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
 
           {page === 9 && (
-            <>
-              <h3>Dentro do modelo, o que você já concluiu?</h3>
-              <p>Ei, relaxa se não tiver feito nada ainda, vamos conseguir!</p>
+            <div style={styles.formItemContainer}>
+              <h3>Quantas horas semanais você tem disponível?</h3>
+              <p>Quanto mais realista melhor hein</p>
 
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <Button
+                <CustomButton
                   type="submit"
                   icon
+                  round
                   style={{
                     marginTop: 10,
                     justifyContent: "flex-end",
@@ -393,11 +430,11 @@ export default function Welcome() {
                   <Icon
                     size="large"
                     name="arrow right"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                   />
-                </Button>
+                </CustomButton>
               </div>
-            </>
+            </div>
           )}
         </div>
       </Form>
