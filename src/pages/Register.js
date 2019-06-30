@@ -7,13 +7,19 @@ import {
   Checkbox,
   Form,
   Container,
-  Transition
+  Transition,
+  Progress
 } from "semantic-ui-react";
 import CustomButton from "../components/CustomButton";
+import NextButton from '../components/NextButton'
 import "react-dates/lib/css/_datepicker.css";
 
 import Start from "./Start";
 import Login from './Login';
+
+const scale = (num, in_min, in_max, out_min, out_max) => {
+  return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
 
 const styles = {
   inputContainer: {
@@ -51,6 +57,7 @@ export default function Welcome() {
 
   const [page, setPage] = useState(0);
   const [fields, setField] = useState(fieldsInitialState);
+  const progressPercent = scale(page, 0, 15, 0, 100);
   console.log(fields);
 
   const {
@@ -81,6 +88,13 @@ export default function Welcome() {
             onClick={() => setPage(page - 1)}
           />
         )}
+
+        {page > 0 && 
+          <div style={{marginTop: 25}}>
+            <Progress percent={progressPercent} color="black" size="small"/>
+          </div>
+        }
+
         <div>{page === 0 && <Start setPage={setPage} page={page} />}</div>
 
 				{	page === -1 && <Login/> }
@@ -97,22 +111,7 @@ export default function Welcome() {
                 placeholder="Ana Maria"
                 onChange={updateFormData}
               />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  icon
-                  round
-                  basic
-                  color="green"
-                  style={{ marginTop: 10, justifyContent: "flex-end" }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    style={{ color: "black" }}
-                    name="arrow right"
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -127,25 +126,7 @@ export default function Welcome() {
                 placeholder="Aninha"
                 onChange={updateFormData}
               />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  icon
-                  round
-                  basic
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -160,24 +141,7 @@ export default function Welcome() {
                 placeholder="anamariabastos@gmail.com"
                 onChange={updateFormData}
               />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  icon
-                  round
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -192,25 +156,7 @@ export default function Welcome() {
                 size="big"
                 onChange={updateFormData}
               />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  type="submit"
-                  round
-                  icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -226,25 +172,7 @@ export default function Welcome() {
                 size="big"
                 onChange={updateFormData}
               />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  type="submit"
-                  round
-                  icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -299,25 +227,7 @@ export default function Welcome() {
                   checked={contaMais}
                 />
               </Form.Field>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  type="submit"
-                  round
-                  icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -362,25 +272,7 @@ export default function Welcome() {
                   onChange={updateFormData}
                 />
               </Form.Field>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  type="submit"
-                  icon
-                  round
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -404,25 +296,7 @@ export default function Welcome() {
 									onFocusChange={() => {}}
 								/> */}
               </Form.Field>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  type="submit"
-                  icon
-                  round
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -440,25 +314,7 @@ export default function Welcome() {
                 style={{ marginBottom: "10px" }}
               />
               <p>Horas</p>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  type="submit"
-                  icon
-                  round
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </div>
           )}
 
@@ -517,25 +373,7 @@ export default function Welcome() {
                 onChange={updateFormData}
                 style={{ marginBottom: "10px" }}
               />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  round
-                  type="submit"
-                  icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </>
           )}
 
@@ -566,25 +404,7 @@ export default function Welcome() {
                   checked={contaMais}
                 />
               </Form.Field>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  round
-                  type="submit"
-                  icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </>
           )}
 
@@ -615,25 +435,7 @@ export default function Welcome() {
                   checked={contaMais}
                 />
               </Form.Field>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  round
-                  type="submit"
-                  icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </>
           )}
 
@@ -664,25 +466,7 @@ export default function Welcome() {
                   checked={contaMais}
                 />
               </Form.Field>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <CustomButton
-                  round
-                  type="submit"
-                  icon
-                  style={{
-                    marginTop: 10,
-                    justifyContent: "flex-end",
-                    backgroundColor: "#46D3A8"
-                  }}
-                  onClick={() => setPage(page + 1)}
-                >
-                  <Icon
-                    size="large"
-                    name="arrow right"
-                    style={{ color: "black" }}
-                  />
-                </CustomButton>
-              </div>
+              <NextButton setPage={setPage} page={page}/>
             </>
           )}
         </div>
