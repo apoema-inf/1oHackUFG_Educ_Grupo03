@@ -24,7 +24,7 @@ const scale = (num, in_min, in_max, out_min, out_max) => {
 
 const styles = {
   inputContainer: {
-    marginTop: 100
+    marginTop: 50
   },
   formItemContainer: {
     marginLeft: 20,
