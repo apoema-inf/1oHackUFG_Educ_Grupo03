@@ -8,7 +8,8 @@ import {
   Form,
   Container,
   Transition,
-  Progress
+  Progress,
+  Table
 } from "semantic-ui-react";
 import CustomButton from "../components/CustomButton";
 import NextButton from '../components/NextButton'
@@ -57,7 +58,7 @@ export default function Welcome() {
 
   const [page, setPage] = useState(0);
   const [fields, setField] = useState(fieldsInitialState);
-  const progressPercent = scale(page, 0, 15, 0, 100);
+  const progressPercent = scale(page, 0, 13, 0, 100);
   console.log(fields);
 
   const {
@@ -91,7 +92,7 @@ export default function Welcome() {
 
         {page > 0 && 
           <div style={{marginTop: 25}}>
-            <Progress percent={progressPercent} color="black" size="small"/>
+            <Progress percent={progressPercent} color="black" size="tiny"/>
           </div>
         }
 
@@ -380,6 +381,43 @@ export default function Welcome() {
           {page === 11 && (
             <>
               <h3 style={{ marginBottom: "20px" }}>
+                Qual é o seu nível de dificuldade de cumprir metas?
+              </h3>
+
+              <Form.Field>
+                <Checkbox
+                  name="tema"
+                  radio
+                  value={1}
+                  label="Acho muito díficil"
+                  onChange={updateFormData}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Checkbox
+                  name="tema"
+                  radio
+                  value={0}
+                  label="Consigo cumprir algumas delas..."
+                  onChange={updateFormData}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Checkbox
+                  name="tema"
+                  radio
+                  value={0}
+                  label="Tenho Facilidade"
+                  onChange={updateFormData}
+                />
+              </Form.Field>
+              <NextButton setPage={setPage} page={page}/>
+            </>
+          )}
+
+          {page === 12 && (
+            <>
+              <h3 style={{ marginBottom: "20px" }}>
                 Como quer definir suas metas:
               </h3>
 
@@ -400,37 +438,6 @@ export default function Welcome() {
                   radio
                   value={1}
                   label="Quinzenais"
-                  onChange={updateFormData}
-                  checked={contaMais}
-                />
-              </Form.Field>
-              <NextButton setPage={setPage} page={page}/>
-            </>
-          )}
-
-          {page === 12 && (
-            <>
-              <h3 style={{ marginBottom: "20px" }}>
-                Como quer que a gente te acompanhe?
-              </h3>
-
-              <Form.Field>
-                <Checkbox
-                  name="Notify"
-                  radio
-                  value={0}
-                  label="Quero vocês super presentes na minha jornada (mais notificações)"
-                  onChange={updateFormData}
-                  checked={contaMais}
-                />
-              </Form.Field>
-
-              <Form.Field>
-                <Checkbox
-                  name="Notify"
-                  radio
-                  value={1}
-                  label="Quem avisa amigo é... (menos notificações)"
                   onChange={updateFormData}
                   checked={contaMais}
                 />
@@ -469,6 +476,8 @@ export default function Welcome() {
               <NextButton setPage={setPage} page={page}/>
             </>
           )}
+
+          
         </div>
       </Form>
     </Container>
