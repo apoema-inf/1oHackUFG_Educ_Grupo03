@@ -15,14 +15,14 @@ export default function Dashboard({activeNav, setActiveNav}) {
       backgroundColor: "#9F74FF"
     },
     {
-      text: "CALENDARIO",
-      image: CALENDARIO,
-      backgroundColor: "#FFCB58"
-    },
-    {
       text: "JORNADA",
       image: JORNADA,
       backgroundColor: "#F42D22"
+    },
+    {
+      text: "CALENDARIO",
+      image: CALENDARIO,
+      backgroundColor: "#FFCB58"
     },
     {
       text: "PROFILE",
