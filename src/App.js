@@ -6,8 +6,8 @@ import Start from "./pages/Start";
 function App() {
   return (
     <div className="App">
-      {/* <Welcome /> */}
-      {<Start />}
+      <Welcome />
+      {/* {<Start />} */}
     </div>
   );
 }

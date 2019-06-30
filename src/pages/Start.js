@@ -3,11 +3,9 @@ import Logo from "../img/Logo.svg";
 import LogoUFG from "../img/LogoUFG.png";
 import { Icon, Button, Form, Container } from "semantic-ui-react";
 
-const Start = () => (
+const Start = ({ setPage, page }) => (
   <Container>
     <Form>
-      <Icon name="arrow left" style={{ marginTop: 40 }} />
-
       <>
         <div
           style={{
@@ -26,6 +24,7 @@ const Start = () => (
               justifyContent: "flex-end",
               backgroundColor: "#00B37C"
             }}
+            onClick={() => setPage(page+1)}
           >
             Começar!
           </Button>
