@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Logo from "../img/Logo.svg";
-import LogoUFG from "../img/LogoUFG.png";
-import { SingleDatePicker } from "react-dates";
 import {
   Input,
   Icon,
@@ -11,6 +9,8 @@ import {
   Container
 } from "semantic-ui-react";
 import "react-dates/lib/css/_datepicker.css";
+
+import CustomButton from '../components/CustomButton';
 
 export default class Login extends Component {
   constructor(props) {
@@ -73,7 +73,7 @@ export default class Login extends Component {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                marginTop: "30px"
+                marginTop: 10
               }}
             >
               <img src={Logo} width="250" />
@@ -110,9 +110,9 @@ export default class Login extends Component {
                 marginTop: "20px"
               }}
             >
-              <Button
+              <CustomButton
+                basic
                 type="submit"
-                icon
                 style={{
                   marginTop: 10,
                   justifyContent: "flex-end",
@@ -121,7 +121,7 @@ export default class Login extends Component {
                 }}
               >
                 Entrar
-              </Button>
+              </CustomButton>
             </div>
           </div>
         </Form>
