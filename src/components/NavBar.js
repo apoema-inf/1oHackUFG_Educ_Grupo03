@@ -8,7 +8,7 @@ import CustomButton from '../components/CustomButton';
 
 export default function NavBar() {
   return (
-    <div>
+    <div style={{position: 'absolute'}}>
       <div style={{display: 'flex', marginTop: "87.7vh"}}>
         <CustomButton style={{margin: 0}}>
           <img src={HOME} alt="home" width="80%"/>
