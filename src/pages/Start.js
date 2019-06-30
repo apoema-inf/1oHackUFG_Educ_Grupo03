@@ -49,7 +49,7 @@ const Start = ({ setPage, page }) => (
 
           <div
             style={{
-              marginTop: 70,
+              marginTop: 40,
               alignSelf: "center"
             }}
           >
