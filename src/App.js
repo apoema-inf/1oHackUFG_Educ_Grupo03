@@ -5,11 +5,12 @@ import Start from "./pages/Start";
 import Todo from "./pages/Todo";
 import Login from "./pages/Login";
 
+import "./index.css"
+
 function App() {
   return (
     <div className="App">
       <Welcome />
-      {/* {<Start />} */}
     </div>
   );
 }
