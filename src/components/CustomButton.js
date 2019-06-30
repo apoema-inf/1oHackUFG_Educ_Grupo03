@@ -11,8 +11,9 @@ export default function CustomButton(props) {
   }
 
   const roundStyle = props.round ? {
-    width:50,
-    height:50,
+    marginTop:30,
+    width:60,
+    height:60,
   } : {}
 
   return (
