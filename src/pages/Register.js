@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {SingleDatePicker} from 'react-dates';
-import { Input, Icon, Checkbox, Button, Form, Container } from 'semantic-ui-react';
+import { Input, Button, Icon, Checkbox, Form, Container } from 'semantic-ui-react';
+import CustomButton from '../components/CustomButton';
 import 'react-dates/lib/css/_datepicker.css';
 
 import Start from './Start';
 
 const styles = {
 	inputContainer: {
-		marginTop: 200
+		marginTop: 100
 	}
 }
 
@@ -28,7 +29,7 @@ export default function Welcome() {
 		contaMais: undefined,
 	}
 
-	const [page, setPage] = useState(9)
+	const [page, setPage] = useState(0)
 	const [fields, setField] = useState(fieldsInitialState)
 	console.log(fields)
 
@@ -40,19 +41,22 @@ export default function Welcome() {
 				{ page > 0 &&
 					<Icon name="arrow left" size="large" style={{marginTop: 20}} onClick={() => setPage(page-1)}/>
 				}
-				<div style={styles.inputContainer}>
+				<div>
 					{ page === 0 &&
 						<Start setPage={setPage} page={page}/>
 					}
+				</div>
+
+				<div style={styles.inputContainer}>
 
 					{ page === 1 && 
 						<>
 							<h3>Qual é o seu nome completo?</h3>
 							<Input value={nome} name="nome" fluid size="big" placeholder="Ana Maria" onChange={updateFormData}/>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" style={{ color: "white" }} name="arrow right"/>
-								</Button>
+								<CustomButton icon round basic color="green" style={{marginTop: 10, justifyContent: 'flex-end'}} onClick={() => setPage(page+1)}>
+									<Icon size="large" style={{ color: "black" }} name="arrow right"/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -62,9 +66,9 @@ export default function Welcome() {
 							<h3>E ai, como posso te chamar?</h3>
 							<Input value={apelido} name="apelido" fluid size="big" placeholder="Aninha" onChange={updateFormData}/>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton icon round basic style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -74,9 +78,9 @@ export default function Welcome() {
 							<h3>Seu melhor email?</h3>
 							<Input value={email} name="email" fluid size="big" placeholder="anamariabastos@gmail.com" onChange={updateFormData}/>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton icon round style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -86,9 +90,9 @@ export default function Welcome() {
 							<h3>Senha SUPER secreta</h3>
 							<Input type="password" value={password} name="password" fluid size="big" onChange={updateFormData}/>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button type="submit" icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton type="submit" round icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -98,9 +102,9 @@ export default function Welcome() {
 							<h3>Qual é o seu número de matrícula?</h3>
 							<Input type="number" value={matricula} name="matricula" fluid size="big" onChange={updateFormData}/>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button type="submit" icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton type="submit" round icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -152,9 +156,9 @@ export default function Welcome() {
 								/>
 							</Form.Field>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button type="submit" icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton type="submit" round icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -201,9 +205,9 @@ export default function Welcome() {
 								/>
 							</Form.Field>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button type="submit" icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton type="submit" icon round style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -221,9 +225,9 @@ export default function Welcome() {
 								/> */}
 							</Form.Field>
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button type="submit" icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton type="submit" icon round style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}
@@ -234,9 +238,22 @@ export default function Welcome() {
 							<p>Ei, relaxa se não tiver feito nada ainda, vamos conseguir!</p>
 							
 							<div style={{display: 'flex', flexDirection: 'column'}}>
-								<Button type="submit" icon style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
-									<Icon size="large" name="arrow right" style={{ color: "white" }}/>
-								</Button>
+								<CustomButton type="submit" icon round style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
+							</div>
+						</>
+					}
+
+					{ page === 10 && 
+						<>
+							<h3>Quantas horas semanais você tem disponível?</h3>
+							<p>Quanto mais realista melhor hein</p>
+
+							<div style={{display: 'flex', flexDirection: 'column'}}>
+								<CustomButton type="submit" icon round style={{marginTop: 10, justifyContent: 'flex-end', backgroundColor: "#46D3A8"}} onClick={() => setPage(page+1)}>
+									<Icon size="large" name="arrow right" style={{ color: "black" }}/>
+								</CustomButton>
 							</div>
 						</>
 					}

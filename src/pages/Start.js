@@ -1,7 +1,8 @@
 import React from "react";
 import Logo from "../img/Logo.svg";
 import LogoUFG from "../img/LogoUFG.png";
-import { Icon, Button, Form, Container } from "semantic-ui-react";
+import { Form, Container } from "semantic-ui-react";
+import CustomButton from '../components/CustomButton';
 
 const Start = ({ setPage, page }) => (
   <Container>
@@ -10,24 +11,20 @@ const Start = ({ setPage, page }) => (
         <div
           style={{
             display: "flex",
-            justifyContent: "center"
+            justifyContent: "center",
+            marginTop: 50
           }}
         >
           <img src={Logo} width="250" />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <Button
-            icon
-            style={{
-              marginTop: 60,
-              justifyContent: "flex-end",
-              backgroundColor: "#00B37C"
-            }}
+          <CustomButton
             onClick={() => setPage(page+1)}
+            style={{width: 200, height: 50}}
           >
-            Começar!
-          </Button>
+            Começar
+          </CustomButton>
 
           <div
             style={{
