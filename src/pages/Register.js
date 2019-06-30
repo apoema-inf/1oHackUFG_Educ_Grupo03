@@ -13,6 +13,7 @@ import {
 } from "semantic-ui-react";
 import CustomButton from "../components/CustomButton";
 import NextButton from '../components/NextButton';
+import Dashboard from '../pages/Dashboard';
 import NavBar from '../components/NavBar';
 import "react-dates/lib/css/_datepicker.css";
 
@@ -57,7 +58,7 @@ export default function Welcome() {
     horasSemanais: undefined,
   };
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(13);
   const [fields, setField] = useState(fieldsInitialState);
   const [activeNav, setActiveNav] = useState(0);
   const progressPercent = scale(page, 0, 13, 0, 100);
@@ -94,7 +95,7 @@ export default function Welcome() {
             />
           )}
 
-          {page > 0 && page < 13 &&
+          {page > 0 && page < 14 &&
             <div style={{marginTop: 25}}>
               <Progress percent={progressPercent} color="black" size="tiny"/>
             </div>
@@ -484,7 +485,7 @@ export default function Welcome() {
         </Form>
       </Container>
       { page > 13 &&
-        <NavBar activeNav={activeNav} setActiveNav={setActiveNav}/>
+        <Dashboard activeNav={activeNav} setActiveNav={setActiveNav}/>
       }
     </div>
   );
