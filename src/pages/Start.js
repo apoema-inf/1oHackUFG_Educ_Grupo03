@@ -21,9 +21,9 @@ const Start = ({ setPage, page }) => (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <CustomButton
             onClick={() => setPage(page+1)}
-            style={{width: 200, height: 50}}
+            style={{width: 200, height: 50, fontSize: 17}}
           >
-            Começar
+            <strong>Começar</strong>
           </CustomButton>
 
           <div
