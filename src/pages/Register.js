@@ -24,16 +24,6 @@ const scale = (num, in_min, in_max, out_min, out_max) => {
   return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-const styles = {
-  inputContainer: {
-    marginTop: 50
-  },
-  formItemContainer: {
-    marginLeft: 20,
-    marginRight: 20
-  }
-};
-
 export default function Welcome() {
   const updateFormData = e => {
     setField({
@@ -63,6 +53,16 @@ export default function Welcome() {
   const [activeNav, setActiveNav] = useState(0);
   const progressPercent = scale(page, 0, 13, 0, 100);
   console.log(fields);
+
+  const styles = {
+    inputContainer: {
+      marginTop: page < 13 ? 50 : 0
+    },
+    formItemContainer: {
+      marginLeft: 20,
+      marginRight: 20
+    }
+  };
 
   const {
     nome,
