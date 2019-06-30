@@ -13,6 +13,7 @@ import CustomButton from "../components/CustomButton";
 import "react-dates/lib/css/_datepicker.css";
 
 import Start from "./Start";
+import Login from './Login';
 
 const styles = {
   inputContainer: {
@@ -39,7 +40,13 @@ export default function Welcome() {
     password: "",
     matricula: "",
     contaMais: undefined,
-    dataLimite: ""
+    dataLimite: "",
+    todo1: "",
+    todo2: "",
+    todo3: "",
+    todo4: "",
+    todo5: "",
+    horasSemanais: undefined,
   };
 
   const [page, setPage] = useState(0);
@@ -53,12 +60,19 @@ export default function Welcome() {
     password,
     matricula,
     contaMais,
-    dataLimite
+    dataLimite,
+    todo1,
+    todo2,
+    todo3,
+    todo4,
+    todo5,
+    horasSemanais
   } = fields;
 
   return (
     <Container>
       <Form onSubmit={() => console.log(fields)}>
+
         {page > 0 && (
           <Icon
             name="arrow left"
@@ -69,7 +83,9 @@ export default function Welcome() {
         )}
         <div>{page === 0 && <Start setPage={setPage} page={page} />}</div>
 
+				{	page === -1 && <Login/> }
         <div style={styles.inputContainer}>
+
           {page === 1 && (
             <div style={styles.formItemContainer}>
               <h3>Qual é o seu nome completo?</h3>
@@ -414,7 +430,16 @@ export default function Welcome() {
             <div style={styles.formItemContainer}>
               <h3>Quantas horas semanais você tem disponível?</h3>
               <p>Quanto mais realista melhor hein</p>
-
+              <Input
+                type="number"
+                value={horasSemanais}
+                placeholder="32"
+                fluid
+                size="big"
+                onChange={updateFormData}
+                style={{ marginBottom: "10px" }}
+              />
+              <p>Horas</p>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <CustomButton
                   type="submit"
@@ -435,6 +460,230 @@ export default function Welcome() {
                 </CustomButton>
               </div>
             </div>
+          )}
+
+          {page === 10 && (
+            <>
+              <h3 style={{ marginBottom: "20px" }}>
+                Me conta as primeiras 5 coisas que você precisa fazer
+              </h3>
+              <Input
+                type="text"
+                value={todo1}
+                name="todo1"
+                placeholder="Pesquisar sobre Machado de Assis"
+                fluid
+                size="big"
+                onChange={updateFormData}
+                style={{ marginBottom: "10px" }}
+              />
+              <Input
+                type="text"
+                value={todo2}
+                name="todo2"
+                placeholder="Ler o livro Dom Casmurro"
+                fluid
+                size="big"
+                onChange={updateFormData}
+                style={{ marginBottom: "10px" }}
+              />
+              <Input
+                type="text"
+                value={todo3}
+                name="todo3"
+                placeholder="Reformular questão problema"
+                fluid
+                size="big"
+                onChange={updateFormData}
+                style={{ marginBottom: "10px" }}
+              />
+              <Input
+                type="text"
+                value={todo4}
+                name="todo4"
+                placeholder="Escolher metodologia"
+                fluid
+                size="big"
+                onChange={updateFormData}
+                style={{ marginBottom: "10px" }}
+              />
+              <Input
+                type="text"
+                value={todo5}
+                name="todo5"
+                placeholder="Marcar as orientações"
+                fluid
+                size="big"
+                onChange={updateFormData}
+                style={{ marginBottom: "10px" }}
+              />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <CustomButton
+                  round
+                  type="submit"
+                  icon
+                  style={{
+                    marginTop: 10,
+                    justifyContent: "flex-end",
+                    backgroundColor: "#46D3A8"
+                  }}
+                  onClick={() => setPage(page + 1)}
+                >
+                  <Icon
+                    size="large"
+                    name="arrow right"
+                    style={{ color: "black" }}
+                  />
+                </CustomButton>
+              </div>
+            </>
+          )}
+
+          {page === 11 && (
+            <>
+              <h3 style={{ marginBottom: "20px" }}>
+                Como quer definir suas metas:
+              </h3>
+
+              <Form.Field>
+                <Checkbox
+                  name="metas"
+                  radio
+                  value={0}
+                  label="Semanais"
+                  onChange={updateFormData}
+                  checked={contaMais}
+                />
+              </Form.Field>
+
+              <Form.Field>
+                <Checkbox
+                  name="metas"
+                  radio
+                  value={1}
+                  label="Quinzenais"
+                  onChange={updateFormData}
+                  checked={contaMais}
+                />
+              </Form.Field>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <CustomButton
+                  round
+                  type="submit"
+                  icon
+                  style={{
+                    marginTop: 10,
+                    justifyContent: "flex-end",
+                    backgroundColor: "#46D3A8"
+                  }}
+                  onClick={() => setPage(page + 1)}
+                >
+                  <Icon
+                    size="large"
+                    name="arrow right"
+                    style={{ color: "black" }}
+                  />
+                </CustomButton>
+              </div>
+            </>
+          )}
+
+          {page === 12 && (
+            <>
+              <h3 style={{ marginBottom: "20px" }}>
+                Como quer que a gente te acompanhe?
+              </h3>
+
+              <Form.Field>
+                <Checkbox
+                  name="Notify"
+                  radio
+                  value={0}
+                  label="Quero vocês super presentes na minha jornada (mais notificações)"
+                  onChange={updateFormData}
+                  checked={contaMais}
+                />
+              </Form.Field>
+
+              <Form.Field>
+                <Checkbox
+                  name="Notify"
+                  radio
+                  value={1}
+                  label="Quem avisa amigo é... (menos notificações)"
+                  onChange={updateFormData}
+                  checked={contaMais}
+                />
+              </Form.Field>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <CustomButton
+                  round
+                  type="submit"
+                  icon
+                  style={{
+                    marginTop: 10,
+                    justifyContent: "flex-end",
+                    backgroundColor: "#46D3A8"
+                  }}
+                  onClick={() => setPage(page + 1)}
+                >
+                  <Icon
+                    size="large"
+                    name="arrow right"
+                    style={{ color: "black" }}
+                  />
+                </CustomButton>
+              </div>
+            </>
+          )}
+
+          {page === 13 && (
+            <>
+              <h3 style={{ marginBottom: "20px" }}>
+                Como quer que a gente te acompanhe?
+              </h3>
+
+              <Form.Field>
+                <Checkbox
+                  name="Notify"
+                  radio
+                  value={0}
+                  label="Quero vocês super presentes na minha jornada (mais notificações)"
+                  onChange={updateFormData}
+                  checked={contaMais}
+                />
+              </Form.Field>
+
+              <Form.Field>
+                <Checkbox
+                  name="Notify"
+                  radio
+                  value={1}
+                  label="Quem avisa amigo é... (menos notificações)"
+                  onChange={updateFormData}
+                  checked={contaMais}
+                />
+              </Form.Field>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <CustomButton
+                  round
+                  type="submit"
+                  icon
+                  style={{
+                    marginTop: 10,
+                    justifyContent: "flex-end",
+                    backgroundColor: "#46D3A8"
+                  }}
+                  onClick={() => setPage(page + 1)}
+                >
+                  <Icon
+                    size="large"
+                    name="arrow right"
+                    style={{ color: "black" }}
+                  />
+                </CustomButton>
+              </div>
+            </>
           )}
         </div>
       </Form>

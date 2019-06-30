@@ -34,9 +34,13 @@ const Start = ({ setPage, page }) => (
             }}
           >
             <a
-              href="https://www.w3schools.com"
+              href=""
               styles={{
                 marginTop: 100
+              }}
+              onClick={(e) => {
+                e.preventDefault();
+                setPage(-1)
               }}
             >
               Já sou Cadastrado
