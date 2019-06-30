@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 344 335" style="enable-background:new 0 0 344 335;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#020202;stroke-width:10.4571;stroke-miterlimit:10;}
+	.st1{fill:#F42D22;stroke:#020202;stroke-width:10.4571;stroke-miterlimit:10;}
+</style>
+<g>
+	<polygon class="st0" points="54.5,198.01 105.25,228 172.14,198.01 234.42,228 289.79,198.01 259.8,126.5 222.89,149.57 
+		172.14,114.97 121.39,147.26 89.1,117.28 	"/>
+	<line class="st0" x1="222.89" y1="149.57" x2="234.42" y2="228"/>
+	<line class="st0" x1="172.14" y1="114.97" x2="172.14" y2="198.01"/>
+	<line class="st0" x1="121.39" y1="149.57" x2="105.25" y2="228"/>
+</g>
+<path class="st1" d="M226.48,146.39c3.07-6.61,6.59-10.08,6.59-16.46c0-13.22-10.71-23.93-23.93-23.93
+	c-13.22,0-23.93,10.71-23.93,23.93c0,4.66,1.41,7.74,3.66,12.67l18.87,36.6L226.48,146.39z"/>
+</svg>

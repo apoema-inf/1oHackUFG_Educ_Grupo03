@@ -111,7 +111,8 @@ export default function Welcome() {
 
 					{ page === 6 && 
 						<>
-							<h3>Conta mais</h3>
+							<h3>Me conta mais</h3>
+							<p>{apelido ? `${apelido}, você está em que etapa?` : 'você está em que etapa?'}</p>
 							<Form.Field>
 								<Checkbox
 									name="contaMais" 
