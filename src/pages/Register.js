@@ -58,7 +58,7 @@ export default function Welcome() {
     horasSemanais: undefined,
   };
 
-  const [page, setPage] = useState(13);
+  const [page, setPage] = useState(0);
   const [fields, setField] = useState(fieldsInitialState);
   const [activeNav, setActiveNav] = useState(0);
   const progressPercent = scale(page, 0, 13, 0, 100);
