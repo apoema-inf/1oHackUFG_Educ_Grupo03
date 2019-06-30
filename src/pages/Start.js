@@ -22,9 +22,10 @@ const Start = ({ setPage, page }) => (
             style={{
               marginTop: 60,
               justifyContent: "flex-end",
-              backgroundColor: "#00B37C"
+              backgroundColor: "#00B37C",
+              color: "white"
             }}
-            onClick={() => setPage(page+1)}
+            onClick={() => setPage(page + 1)}
           >
             Começar!
           </Button>
